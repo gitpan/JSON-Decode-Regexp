@@ -8,7 +8,7 @@ require Exporter;
 our @ISA       = qw(Exporter);
 our @EXPORT_OK = qw(from_json);
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 our $FROM_JSON = qr{
 
@@ -49,6 +49,7 @@ our $FROM_JSON = qr{
 )
 
 (?<VALUE>
+  \s*
   (
       (?&STRING)
     |
@@ -64,6 +65,7 @@ our $FROM_JSON = qr{
   |
     null (?{ [$^R, undef] })
   )
+  \s*
 )
 
 (?<STRING>
@@ -116,7 +118,7 @@ JSON::Decode::Regexp - JSON parser as a single Perl Regex
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
