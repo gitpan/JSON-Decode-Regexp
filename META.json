@@ -43,12 +43,7 @@
       }
    },
    "release_status" : "stable",
-   "resources" : {
-      "homepage" : "http://metacpan.org/release/JSON-Decode-Regexp",
-      "repository" : {
-         "url" : "http://github.com/sharyanto/perl-JSON-Decode-Regexp"
-      }
-   },
-   "version" : "0.02"
+   "resources" : {},
+   "version" : "0.03"
 }
 

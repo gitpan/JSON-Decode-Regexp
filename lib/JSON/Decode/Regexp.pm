@@ -8,7 +8,7 @@ require Exporter;
 our @ISA       = qw(Exporter);
 our @EXPORT_OK = qw(from_json);
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 our $FROM_JSON = qr{
 
@@ -18,16 +18,16 @@ our $FROM_JSON = qr{
 
 (?<OBJECT>
   (?{ [$^R, {}] })
-  \{
+  \{\s*
     (?: (?&KV) # [[$^R, {}], $k, $v]
       (?{ # warn Dumper { obj1 => $^R };
 	 [$^R->[0][0], {$^R->[1] => $^R->[2]}] })
-      (?: , (?&KV) # [[$^R, {...}], $k, $v]
+      (?: \s*,\s* (?&KV) # [[$^R, {...}], $k, $v]
         (?{ # warn Dumper { obj2 => $^R };
 	   [$^R->[0][0], {%{$^R->[0][1]}, $^R->[1] => $^R->[2]}] })
       )*
     )?
-  \}
+  \s*\}
 )
 
 (?<KV>
@@ -39,13 +39,13 @@ our $FROM_JSON = qr{
 
 (?<ARRAY>
   (?{ [$^R, []] })
-  \[
+  \[\s*
     (?: (?&VALUE) (?{ [$^R->[0][0], [$^R->[1]]] })
       (?: \s*,\s* (?&VALUE) (?{ # warn Dumper { atwo => $^R };
 			 [$^R->[0][0], [@{$^R->[0][1]}, $^R->[1]]] })
       )*
     )?
-  \]
+  \s*\]
 )
 
 (?<VALUE>
@@ -112,13 +112,11 @@ __END__
 
 =pod
 
+=encoding utf-8
+
 =head1 NAME
 
 JSON::Decode::Regexp - JSON parser as a single Perl Regex
-
-=head1 VERSION
-
-version 0.02
 
 =head1 SYNOPSIS
 
@@ -153,6 +151,23 @@ features like named capture and recursive pattern.
 =head1 SEE ALSO
 
 L<JSON>, L<JSON::PP>, L<JSON::XS>, L<JSON::Tiny>.
+
+=head1 HOMEPAGE
+
+Please visit the project's homepage at L<https://metacpan.org/release/JSON-Decode-Regexp>.
+
+=head1 SOURCE
+
+Source repository is at L<https://github.com/sharyanto/perl-JSON-Decode-Regexp>.
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+http://rt.cpan.org/Public/Dist/Display.html?Name=JSON-Decode-Regexp
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
 
 =head1 AUTHOR
 

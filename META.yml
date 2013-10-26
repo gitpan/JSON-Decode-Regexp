@@ -19,7 +19,5 @@ meta-spec:
 name: JSON-Decode-Regexp
 requires:
   perl: 5.010001
-resources:
-  homepage: http://metacpan.org/release/JSON-Decode-Regexp
-  repository: http://github.com/sharyanto/perl-JSON-Decode-Regexp
-version: 0.02
+resources: {}
+version: 0.03

@@ -1,9 +1,6 @@
 NAME
     JSON::Decode::Regexp - JSON parser as a single Perl Regex
 
-VERSION
-    version 0.02
-
 SYNOPSIS
      use JSON::Decode::Regexp qw(from_json);
      my $data = from_json(q([1, true, "a", {"b":null}]));
@@ -31,6 +28,21 @@ FAQ
 
 SEE ALSO
     JSON, JSON::PP, JSON::XS, JSON::Tiny.
+
+HOMEPAGE
+    Please visit the project's homepage at
+    <https://metacpan.org/release/JSON-Decode-Regexp>.
+
+SOURCE
+    Source repository is at
+    <https://github.com/sharyanto/perl-JSON-Decode-Regexp>.
+
+BUGS
+    Please report any bugs or feature requests on the bugtracker website
+    http://rt.cpan.org/Public/Dist/Display.html?Name=JSON-Decode-Regexp
+
+    When submitting a bug or request, please include a test-file or a patch
+    to an existing test-file that illustrates the bug or desired feature.
 
 AUTHOR
     Steven Haryanto <stevenharyanto@gmail.com>
